@@ -1,0 +1,8 @@
+import type { Metadata } from "next";
+import Link from "next/link";
+import { ArrowUpRight, ArrowRight } from "lucide-react";
+import PageIntro from "@/components/page-intro";
+import Reveal from "@/components/reveal";
+import { articles } from "@/lib/content";
+export const metadata:Metadata={title:"Ideas & Thinking",description:"Original field notes on venture building, product strategy, customer understanding and growth systems."};
+export default function Thinking(){return <><PageIntro index="03" kicker="IDEAS & THINKING" title={<>What I'm<br/><em>thinking about.</em></>} description="Working principles and original field notes from the intersection of business, human behavior, products and growth. Written as reflections, not claimed past publications."/><section className="thinking-page section-padding"><div className="container"><div className="thinking-note"><span>NOTES FROM THE FIELD</span><p>The best ideas should make the next decision easier.</p></div><div className="thinking-list">{articles.map((a,i)=><Reveal key={a.slug} delay={i*.07}><Link className="thinking-list-item" href={`/thinking/${a.slug}`}><span className="thinking-list-number">{a.number}</span><div><div className="article-draft">{a.category.toUpperCase()} / ORIGINAL FIELD NOTE</div><h2>{a.title}</h2><p>{a.excerpt}</p><span className="reading-time">{a.readingTime}</span></div><ArrowUpRight className="thinking-list-arrow" size={33} strokeWidth={1.3}/></Link></Reveal>)}</div><div className="thinking-bottom"><p>More perspectives will be added as work develops and ideas become clearer.</p><Link className="text-link" href="/contact">Share a problem worth thinking about <ArrowRight size={17}/></Link></div></div></section></>}
